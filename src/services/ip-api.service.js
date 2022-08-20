@@ -1,7 +1,7 @@
 const fs = require("fs");
 const axios = require("axios");
 
-const ipApiBaseURL = "http://ip-api.com/json";
+const ipApiBaseURL = "https://ip-api.com/json";
 
 const getCityLocation = async (city) => {
   try {

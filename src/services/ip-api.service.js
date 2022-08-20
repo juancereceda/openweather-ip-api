@@ -1,6 +1,7 @@
 const fs = require("fs");
 const axios = require("axios");
-const { ipApiBaseURL } = require("../data/baseURLs");
+
+const ipApiBaseURL = "http://ip-api.com/json";
 
 const getCityLocation = async (city) => {
   try {
@@ -9,7 +10,7 @@ const getCityLocation = async (city) => {
     );
     const cityIP = city && citiesIPs[city];
     if (city && !cityIP) {
-      throw new Error("City not found");
+      throw new Error("City is not valid");
     }
     const ipServiceURL = `${ipApiBaseURL}/${cityIP || ""}`;
     const ipApiResponse = (await axios.get(ipServiceURL)).data;

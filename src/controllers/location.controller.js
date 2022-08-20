@@ -1,10 +1,9 @@
-const axios = require("axios");
-const { ipApiBaseURL } = require("../utils/api_urls");
+const { getCityLocation } = require("../services/ip-api.service");
 
 const getLocation = async (req, res) => {
   try {
-    const locationResponse = await axios.get(ipApiBaseURL);
-    res.json({ location: locationResponse.data });
+    const locationResponse = await getCityLocation(req.query.city);
+    res.json({ location: locationResponse });
   } catch (error) {
     res.status(error.response?.status || 400).json({ error: error.message });
   }
